@@ -9,13 +9,51 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        ZStack {
+            HStack {
+                Text("da")
+                Divider()
+                Text("da")
+                Divider()
+                Text("da")
+                Divider()
+                Text("da")
+                Divider()
+                Text("da")
+                Divider()
+                Text("da")
+                Divider()
+                Text("da")
+                Divider()
+                Text("da")
+                Divider()
+                Text("da")
+                Divider()
+                
+            }
+            VStack {
+                Text("da")
+                Divider()
+                Text("da")
+                Divider()
+                Text("da")
+                Divider()
+                Text("da")
+                Divider()
+                Text("da")
+                Divider()
+                Text("da")
+                Divider()
+                Text("da")
+                Divider()
+                Text("da")
+                Divider()
+                Text("da")
+                Divider()
+                
+            }
+            .padding()
         }
-        .padding()
     }
 }
 
