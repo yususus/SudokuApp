@@ -11,7 +11,7 @@ import SwiftUI
 struct SudokuAppApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            RegisterView(RegisterModel: RegisterViewModel())
         }
     }
 }
