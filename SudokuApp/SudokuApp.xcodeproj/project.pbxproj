@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8831B17D2B9B90390026B23B /* BackGroundField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8831B17C2B9B90390026B23B /* BackGroundField.swift */; };
 		88464CB92B98953800C73FC1 /* SudokuAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88464CB82B98953800C73FC1 /* SudokuAppApp.swift */; };
 		88464CBB2B98953800C73FC1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88464CBA2B98953800C73FC1 /* ContentView.swift */; };
 		88464CBD2B98953A00C73FC1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 88464CBC2B98953A00C73FC1 /* Assets.xcassets */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8831B17C2B9B90390026B23B /* BackGroundField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackGroundField.swift; sourceTree = "<group>"; };
 		88464CB52B98953800C73FC1 /* SudokuApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SudokuApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		88464CB82B98953800C73FC1 /* SudokuAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SudokuAppApp.swift; sourceTree = "<group>"; };
 		88464CBA2B98953800C73FC1 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -66,6 +68,7 @@
 				88464CB82B98953800C73FC1 /* SudokuAppApp.swift */,
 				88464CBA2B98953800C73FC1 /* ContentView.swift */,
 				88A9BA9F2B9A3C5C00234C94 /* BackGround.swift */,
+				8831B17C2B9B90390026B23B /* BackGroundField.swift */,
 				88464CBC2B98953A00C73FC1 /* Assets.xcassets */,
 				88464CBE2B98953A00C73FC1 /* Preview Content */,
 			);
@@ -172,6 +175,7 @@
 				88A9BA9E2B9A327500234C94 /* RegisterViewModel.swift in Sources */,
 				88A9BA992B9A2F4F00234C94 /* RegisterView.swift in Sources */,
 				88464CBB2B98953800C73FC1 /* ContentView.swift in Sources */,
+				8831B17D2B9B90390026B23B /* BackGroundField.swift in Sources */,
 				88A9BAA02B9A3C5C00234C94 /* BackGround.swift in Sources */,
 				88464CB92B98953800C73FC1 /* SudokuAppApp.swift in Sources */,
 				88A9BA9C2B9A30DB00234C94 /* Const.swift in Sources */,

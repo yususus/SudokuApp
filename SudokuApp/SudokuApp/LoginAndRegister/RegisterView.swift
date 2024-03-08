@@ -15,9 +15,9 @@ struct RegisterView: View {
         VStack {
             Spacer()
             TextFields.CustomTextField(text: $RegisterModel.textEmail , placeHolder: "Mailinizi giriniz!")
+            TextFields.CustomTextField2(text: $RegisterModel.textUserName , placeHolder: "Kullanıcı adı giriniz!")
             TextFields.SecureCustomField(text: $RegisterModel.textPassword , placeHolder: "Şifre oluşturunuz!", hidden: $eyehidden)
-            TextFields.CustomTextField(text: $RegisterModel.textUserName , placeHolder: "Kullanıcı adı giriniz!")
-            Spacer()
+            
             HStack{
                 Button(action: {
                     
@@ -29,8 +29,8 @@ struct RegisterView: View {
                 }) {
                     Text("Giriş Yap").frame(width: 100, height: 50).background(Color.black).foregroundStyle(Color.white).clipShape(.rect(cornerRadius: 10))
                 }
-            }
-            
+            }.padding(.top, 30)
+            Spacer()
         }.background(BackGround())
         
     }

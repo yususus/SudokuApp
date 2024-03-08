@@ -12,10 +12,11 @@ class TextFields{
     @ViewBuilder
     static func CustomTextField(text : Binding<String>, placeHolder : String)->  some View {
         HStack(alignment: .center) {
+            Image(systemName: "envelope").resizable().aspectRatio(contentMode: .fit).frame(maxWidth: 25,maxHeight: 25)
             ZStack(alignment: .leading) {
                 if text.wrappedValue.isEmpty {
                     Text(placeHolder)
-                        .foregroundColor(.white.opacity(0.8))
+                        .foregroundColor(.black.opacity(0.8))
                 }
                 TextField("", text: text)
                     .foregroundColor(.black)
@@ -23,7 +24,29 @@ class TextFields{
         }
         .frame(width: 350, height: 40)
         .padding(.horizontal, 10)
-        .background(Color.gray)
+        .background(Color.white).opacity(0.95)
+        .shadow(color: .black, radius: 100)
+        .cornerRadius(10)
+        .padding(.horizontal, 20)
+        
+    }
+    @ViewBuilder
+    static func CustomTextField2(text : Binding<String>, placeHolder : String)->  some View {
+        HStack(alignment: .center) {
+            Image(systemName: "person.fill").resizable().aspectRatio(contentMode: .fit).frame(maxWidth: 25,maxHeight: 25)
+            ZStack(alignment: .leading) {
+                if text.wrappedValue.isEmpty {
+                    Text(placeHolder)
+                        .foregroundColor(.black.opacity(0.8))
+                }
+                TextField("", text: text)
+                    .foregroundColor(.black)
+            }
+        }
+        .frame(width: 350, height: 40)
+        .padding(.horizontal, 10)
+        .background(Color.white).opacity(0.95)
+        .shadow(color: .black, radius: 100)
         .cornerRadius(10)
         .padding(.horizontal, 20)
         
@@ -31,10 +54,11 @@ class TextFields{
     @ViewBuilder
     static func SecureCustomField(text : Binding<String>, placeHolder : String, hidden: Binding<Bool>)->  some View {
         HStack(alignment: .center) {
+            Image(systemName: "key.fill").resizable().aspectRatio(contentMode: .fit).frame(maxWidth: 25,maxHeight: 25)
             ZStack(alignment: .leading) {
                 if text.wrappedValue.isEmpty {
                     Text(placeHolder)
-                        .foregroundColor(.white.opacity(0.8))
+                        .foregroundColor(.black.opacity(0.8))
                 }
                 if hidden.wrappedValue {
                     SecureField("", text: text)
@@ -53,7 +77,8 @@ class TextFields{
         }
         .frame(width: 350, height: 40)
         .padding(.horizontal, 10)
-        .background(Color.gray)
+        .background(Color.white).opacity(0.95)
+        .shadow(color: .black, radius: 100)
         .cornerRadius(10)
         .padding(.horizontal, 20)
         

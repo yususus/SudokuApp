@@ -15,7 +15,7 @@ struct LoginView: View {
             Spacer()
             TextFields.CustomTextField(text: $RegisterModel.textEmail , placeHolder: "Mailinizi giriniz!")
             TextFields.SecureCustomField(text: $RegisterModel.textPassword , placeHolder: "Şifre oluşturunuz!", hidden: $eyehidden)
-            Spacer()
+            
             HStack{
                 Button(action: {
                     
@@ -28,8 +28,8 @@ struct LoginView: View {
                 }) {
                     Text("Kayıt Ol").frame(width: 100, height: 50).background(Color.black).foregroundStyle(Color.white).clipShape(.rect(cornerRadius: 10))
                 }
-                            }
-            
+            }.padding(.top, 30)
+            Spacer()
         }.background(BackGround())
     }
 }
