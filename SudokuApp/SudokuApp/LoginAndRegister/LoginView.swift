@@ -13,8 +13,8 @@ struct LoginView: View {
     var body: some View {
         VStack {
             Spacer()
-            TextFields.CustomTextField(text: $RegisterModel.textEmail , placeHolder: "Mailinizi giriniz!")
-            TextFields.SecureCustomField(text: $RegisterModel.textPassword , placeHolder: "Şifre oluşturunuz!", hidden: $eyehidden)
+            Const.CustomTextField(text: $RegisterModel.textEmail , placeHolder: "Mailinizi giriniz!")
+            Const.SecureCustomField(text: $RegisterModel.textPassword , placeHolder: "Şifre oluşturunuz!", hidden: $eyehidden)
             
             HStack{
                 Button(action: {

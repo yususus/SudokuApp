@@ -8,7 +8,8 @@
 import Foundation
 import SwiftUI
 
-class TextFields{
+class Const{
+    static let alertMessage: String = "Oyun süresi bitti."
     @ViewBuilder
     static func CustomTextField(text : Binding<String>, placeHolder : String)->  some View {
         HStack(alignment: .center) {

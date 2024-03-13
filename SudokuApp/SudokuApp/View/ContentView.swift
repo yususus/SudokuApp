@@ -16,9 +16,9 @@ struct ContentView: View {
     var body: some View {
         VStack(spacing: 0) {
             HStack {
-                Text("10.00").font(.title)
-                Image(systemName: "timer").font(.title)
+                TimerView()
             }
+            
             
             Spacer()
             
@@ -63,13 +63,13 @@ struct ContentView: View {
                 }
             }
             .padding(.top, 10)
-        }
+        }.navigationBarBackButtonHidden()
         .padding()
     }
     private func backgroundColorForRow(_ row: Int, _ column: Int) -> Color {
             let boxRow = row / 3
             let boxColumn = column / 3
-            return (boxRow + boxColumn) % 2 == 0 ? Color.gray : Color.white // 3x3'lük kutuların arka plan rengi
+        return (boxRow + boxColumn) % 2 == 0 ? Color.cyan.opacity(0.5) : Color.white // 3x3'lük kutuların arka plan rengi
         }
 }
 

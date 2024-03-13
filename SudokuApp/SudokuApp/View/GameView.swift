@@ -9,36 +9,51 @@ import SwiftUI
 
 struct GameView: View {
     var body: some View {
-        VStack {
-            Spacer()
-            Text("Oyun seçiniz")
-                .font(.custom("", size: 40)).foregroundStyle(Color.blue)
-                .frame(width: 300, height: 100)
+        NavigationView {
+            VStack {
+                Spacer()
+                Text("Oyunu Başlat")
+                    .foregroundStyle(Color.black).fontWeight(.semibold).font(.largeTitle).fontDesign(.rounded)
+                    .frame(width: 300, height: 100)
+                    
+                Spacer()
                 
-            Spacer()
-            Button(action: {}, label: {
-                Text("Kolay")
-                    .frame(width: 100, height: 30)
-                    .background(Color.black)
-                    .foregroundColor(.white)
-                    .clipShape(.rect(cornerRadius: 10))
-            })
-            Button(action: {}, label: {
-                Text("Orta")
-                    .frame(width: 100, height: 30)
-                    .background(Color.black)
-                    .foregroundColor(.white)
-                    .clipShape(.rect(cornerRadius: 10))
-            })
-            Button(action: {}, label: {
-                Text("Zor")
-                    .frame(width: 100, height: 30)
-                    .background(Color.black)
-                    .foregroundColor(.white)
-                    .clipShape(.rect(cornerRadius: 10))
-            })
-            Spacer()
-        }.background(BackGround2())
+                NavigationLink {
+                    ContentView()
+                } label: {
+                    Text("Kolay").font(.title2)
+                        .fontDesign(.rounded)
+                        .frame(width: 150, height: 50)
+                        .background(Color.black)
+                        .foregroundColor(.white)
+                        .clipShape(.rect(cornerRadius: 10))
+                }
+
+                NavigationLink {
+                    ContentView()
+                } label: {
+                    Text("Orta").font(.title2)
+                        .fontDesign(.rounded)
+                        .frame(width: 150, height: 50)
+                        .background(Color.black)
+                        .foregroundColor(.white)
+                        .clipShape(.rect(cornerRadius: 10))
+                }
+
+                NavigationLink {
+                    ContentView()
+                } label: {
+                    Text("Zor").font(.title2)
+                        .fontDesign(.rounded)
+                        .frame(width: 150, height: 50)
+                        .background(Color.black)
+                        .foregroundColor(.white)
+                        .clipShape(.rect(cornerRadius: 10))
+                }
+
+                Spacer()
+            }.background(BackGround2())
+        }
         
     }
 }
