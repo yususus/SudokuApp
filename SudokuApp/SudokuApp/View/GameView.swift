@@ -53,7 +53,8 @@ struct GameView: View {
 
                 Spacer()
             }.background(BackGround2())
-        }
+                
+        }.navigationBarBackButtonHidden()
         
     }
 }

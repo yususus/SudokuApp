@@ -14,14 +14,9 @@ struct ContentView: View {
     let selectableNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9]
     
     var body: some View {
-        VStack(spacing: 0) {
-            HStack {
-                TimerView()
-            }
-            
-            
+        VStack() {
+            TimerView()
             Spacer()
-            
             VStack(spacing: 0) {
                 ForEach(0..<9) { row in
                     HStack(spacing: 0) {

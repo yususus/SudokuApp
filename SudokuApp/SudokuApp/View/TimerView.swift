@@ -18,63 +18,64 @@ struct TimerView: View {
     @State private var navigateToGameView = false // GameView sayfasına gitmek için durum değişkeni
     
     var body: some View {
-        NavigationView {
-            HStack {
-                Text("\(timerValueMinutes) :") // Dakika değerini göster
-                    .font(.title)
-                Text("\(timerValueSeconds)") // Saniye değerini göster
-                    .font(.title)
-                Button(action: {
-                    // "Bitir" butonuna basıldığında timer'ı durdur
-                    isTimerRunning = false
-                    isFinished = true
-                }) {
-                    Text("Bitir")
-                        .frame(width: 65,height: 25)
-                        .background(Color.white)
-                        .foregroundStyle(Color.black)
-                        .clipShape(.rect(cornerRadius: 10))
-                        
-                }
-                .padding()
-                
-                Button(action: {
-                    // "Başlat" butonuna basıldığında timer'ı başlat veya durdur
-                    isTimerRunning = true
-                }) {
-                    Text("Başlat")
-                        .frame(width: 65,height: 25)
-                        .background(Color.white)
-                        .foregroundStyle(Color.black)
-                        .clipShape(.rect(cornerRadius: 10))
-                }
-                .padding()
-            }.frame(width: 350, height: 60).background(Color.gray).clipShape(.rect(cornerRadius: 10))
-                .padding()
+        
+        HStack {
+            Text("\(timerValueMinutes) :") // Dakika değerini göster
+                .font(.title)
+            Text("\(timerValueSeconds)") // Saniye değerini göster
+                .font(.title)
             
-                .onAppear {
-                    isTimerRunning = false
-                }
-                .onReceive(Timer.publish(every: 0.1, on: .main, in: .common).autoconnect()) { _ in
-                    // Timer her 0.1 saniyede bir tetiklenir
-                    if isTimerRunning {
-                        if timerValue > 0 {
-                            timerValue -= 0.1
-                            timerValueMinutes = Int(timerValue / 60) // Dakikaya çevir
-                            timerValueSeconds = Int(timerValue.truncatingRemainder(dividingBy: 60)) // Saniyede kalan kısmı al
-                        } else {
-                            // Geri sayım tamamlandığında timer'ı durdur
-                            isTimerRunning = false
-                            isAlertPresented = true
-                        }
+            NavigationLink(destination: GameView(), isActive: $navigateToGameView) {
+                Text("Bitir")
+                    .frame(width: 65,height: 25)
+                    .background(Color.white)
+                    .foregroundStyle(Color.black)
+                    .clipShape(.rect(cornerRadius: 10))
+            }
+            .onDisappear {
+                isTimerRunning = false
+            }
+            
+            
+            .padding()
+            
+            Button(action: {
+                // "Başlat" butonuna basıldığında timer'ı başlat veya durdur
+                isTimerRunning = true
+            }) {
+                Text("Başlat")
+                    .frame(width: 65,height: 25)
+                    .background(Color.white)
+                    .foregroundStyle(Color.black)
+                    .clipShape(.rect(cornerRadius: 10))
+            }
+            .padding()
+        }.frame(width: 350, height: 60).background(Color.gray).clipShape(.rect(cornerRadius: 10))
+            .padding()
+        
+            .onAppear {
+                isTimerRunning = false
+            }
+            .onReceive(Timer.publish(every: 0.1, on: .main, in: .common).autoconnect()) { _ in
+                // Timer her 0.1 saniyede bir tetiklenir
+                if isTimerRunning {
+                    if timerValue > 0 {
+                        timerValue -= 0.1
+                        timerValueMinutes = Int(timerValue / 60) // Dakikaya çevir
+                        timerValueSeconds = Int(timerValue.truncatingRemainder(dividingBy: 60)) // Saniyede kalan kısmı al
+                    } else {
+                        // Geri sayım tamamlandığında timer'ı durdur
+                        isTimerRunning = false
+                        isAlertPresented = true
                     }
                 }
-                .alert(isPresented: $isAlertPresented){
-                    Alert(title: Text("Oyun Bitti!"), message: Text("Geri sayım tamamlandı."))
-                    
-                }
+            }
+            .alert(isPresented: $isAlertPresented){
+                Alert(title: Text("Oyun Bitti!"), message: Text("Geri sayım tamamlandı."))
                 
-        }
+            }
+        
+        
     }
 }
 
