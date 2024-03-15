@@ -34,6 +34,17 @@ struct TimerView: View {
             }
             .onDisappear {
                 isTimerRunning = false
+                timerValue = 10.0 // Süreyi sıfırla
+                timerValueMinutes = 10 // Dakikayı sıfırla
+                timerValueSeconds = 0 // Saniyeyi sıfırla
+            }
+            .onChange(of: navigateToGameView){newValue in
+                if !newValue{
+                    isTimerRunning = false
+                    timerValue = 10.0 // Süreyi sıfırla
+                    timerValueMinutes = 10 // Dakikayı sıfırla
+                    timerValueSeconds = 0 // Saniyeyi sıfırla
+                }
             }
             
             
@@ -74,8 +85,6 @@ struct TimerView: View {
                 Alert(title: Text("Oyun Bitti!"), message: Text("Geri sayım tamamlandı."))
                 
             }
-        
-        
     }
 }
 
