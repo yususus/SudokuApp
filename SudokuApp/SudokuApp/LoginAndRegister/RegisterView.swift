@@ -8,34 +8,42 @@
 import SwiftUI
 
 struct RegisterView: View {
-    @StateObject var RegisterModel : RegisterViewModel
     @State var eyehidden = true
-    
+    @StateObject var registerViewModel = RegisterViewModel()
     var body: some View {
-        VStack {
-            Spacer()
-            Const.CustomTextField(text: $RegisterModel.textEmail , placeHolder: "Mailinizi giriniz!")
-            Const.CustomTextField2(text: $RegisterModel.textUserName , placeHolder: "Kullanıcı adı giriniz!")
-            Const.SecureCustomField(text: $RegisterModel.textPassword , placeHolder: "Şifre oluşturunuz!", hidden: $eyehidden)
-            
-            HStack{
-                Button(action: {
+        NavigationView {
+            VStack {
+                Spacer()
+                Const.CustomTextField(text: $registerViewModel.textEmail , placeHolder: "Mailinizi giriniz!")
+                Const.CustomTextField2(text: $registerViewModel.textUserName , placeHolder: "Kullanıcı adı giriniz!")
+                Const.SecureCustomField(text: $registerViewModel.textPassword , placeHolder: "Şifre oluşturunuz!", hidden: $eyehidden)
+                
+                HStack{
+                    Button(action: {
+                        registerViewModel.registerUser()
+                    }) {
+                        Text("Kayıt Ol").frame(width: 100, height: 50).background(Color.black).foregroundStyle(Color.white).clipShape(.rect(cornerRadius: 10))
+                    }
+                    NavigationLink {
+                        LoginView()
+                    } label: {
+                        Text("Giriş Yap").frame(width: 100, height: 50).background(Color.black).foregroundStyle(Color.white).clipShape(.rect(cornerRadius: 10))
+                    }
                     
-                }) {
-                    Text("Kayıt Ol").frame(width: 100, height: 50).background(Color.black).foregroundStyle(Color.white).clipShape(.rect(cornerRadius: 10))
+                }.padding(.top, 30)
+                if registerViewModel.isRegistering {
+                    ZStack {
+                        ProgressView()
+                    }
                 }
-                Button(action: {
-                    
-                }) {
-                    Text("Giriş Yap").frame(width: 100, height: 50).background(Color.black).foregroundStyle(Color.white).clipShape(.rect(cornerRadius: 10))
-                }
-            }.padding(.top, 30)
-            Spacer()
-        }.background(BackGround())
+                Spacer()
+            }.background(BackGround())
+                
+        }.navigationBarBackButtonHidden()
         
     }
 }
 
 #Preview {
-    RegisterView(RegisterModel: RegisterViewModel())
+    RegisterView()
 }

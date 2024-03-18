@@ -20,6 +20,12 @@
 		88A9BA9E2B9A327500234C94 /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88A9BA9D2B9A327500234C94 /* RegisterViewModel.swift */; };
 		88A9BAA02B9A3C5C00234C94 /* BackGround.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88A9BA9F2B9A3C5C00234C94 /* BackGround.swift */; };
 		88C9B4A02BA1B1E700845644 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C9B49F2BA1B1E700845644 /* TimerView.swift */; };
+		88D3B82A2BA85446008F3F41 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 88D3B8292BA85446008F3F41 /* GoogleService-Info.plist */; };
+		88D3B8432BA85D0C008F3F41 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 88D3B8422BA85D0C008F3F41 /* FirebaseAnalytics */; };
+		88D3B8452BA85D0C008F3F41 /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 88D3B8442BA85D0C008F3F41 /* FirebaseAnalyticsSwift */; };
+		88D3B8472BA85D0C008F3F41 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 88D3B8462BA85D0C008F3F41 /* FirebaseAuth */; };
+		88D3B8492BA85D0C008F3F41 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 88D3B8482BA85D0C008F3F41 /* FirebaseFirestore */; };
+		88D3B84B2BA86146008F3F41 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D3B84A2BA86146008F3F41 /* LoginViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +43,8 @@
 		88A9BA9D2B9A327500234C94 /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
 		88A9BA9F2B9A3C5C00234C94 /* BackGround.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackGround.swift; sourceTree = "<group>"; };
 		88C9B49F2BA1B1E700845644 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
+		88D3B8292BA85446008F3F41 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		88D3B84A2BA86146008F3F41 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,6 +52,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				88D3B8452BA85D0C008F3F41 /* FirebaseAnalyticsSwift in Frameworks */,
+				88D3B8492BA85D0C008F3F41 /* FirebaseFirestore in Frameworks */,
+				88D3B8472BA85D0C008F3F41 /* FirebaseAuth in Frameworks */,
+				88D3B8432BA85D0C008F3F41 /* FirebaseAnalytics in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -76,6 +88,7 @@
 				88464CB82B98953800C73FC1 /* SudokuAppApp.swift */,
 				88986ADF2BA0689000C4AFF8 /* SudokuModel.swift */,
 				88464CBC2B98953A00C73FC1 /* Assets.xcassets */,
+				88D3B8292BA85446008F3F41 /* GoogleService-Info.plist */,
 				88464CBE2B98953A00C73FC1 /* Preview Content */,
 			);
 			path = SudokuApp;
@@ -114,6 +127,7 @@
 				88A9BA962B9A2F4100234C94 /* LoginView.swift */,
 				88A9BA982B9A2F4F00234C94 /* RegisterView.swift */,
 				88A9BA9D2B9A327500234C94 /* RegisterViewModel.swift */,
+				88D3B84A2BA86146008F3F41 /* LoginViewModel.swift */,
 			);
 			path = LoginAndRegister;
 			sourceTree = "<group>";
@@ -142,6 +156,12 @@
 			dependencies = (
 			);
 			name = SudokuApp;
+			packageProductDependencies = (
+				88D3B8422BA85D0C008F3F41 /* FirebaseAnalytics */,
+				88D3B8442BA85D0C008F3F41 /* FirebaseAnalyticsSwift */,
+				88D3B8462BA85D0C008F3F41 /* FirebaseAuth */,
+				88D3B8482BA85D0C008F3F41 /* FirebaseFirestore */,
+			);
 			productName = SudokuApp;
 			productReference = 88464CB52B98953800C73FC1 /* SudokuApp.app */;
 			productType = "com.apple.product-type.application";
@@ -171,7 +191,7 @@
 			);
 			mainGroup = 88464CAC2B98953800C73FC1;
 			packageReferences = (
-				886D64A82BA4CB3E00F882F1 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				88D3B8412BA85D0C008F3F41 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = 88464CB62B98953800C73FC1 /* Products */;
 			projectDirPath = "";
@@ -189,6 +209,7 @@
 			files = (
 				88464CC02B98953A00C73FC1 /* Preview Assets.xcassets in Resources */,
 				88464CBD2B98953A00C73FC1 /* Assets.xcassets in Resources */,
+				88D3B82A2BA85446008F3F41 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -207,6 +228,7 @@
 				88986AE32BA06F6600C4AFF8 /* GameView.swift in Sources */,
 				88A9BAA02B9A3C5C00234C94 /* BackGround.swift in Sources */,
 				88986AE02BA0689000C4AFF8 /* SudokuModel.swift in Sources */,
+				88D3B84B2BA86146008F3F41 /* LoginViewModel.swift in Sources */,
 				88464CB92B98953800C73FC1 /* SudokuAppApp.swift in Sources */,
 				88986AE52BA071E500C4AFF8 /* BackGround2.swift in Sources */,
 				88A9BA9C2B9A30DB00234C94 /* Const.swift in Sources */,
@@ -417,7 +439,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		886D64A82BA4CB3E00F882F1 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+		88D3B8412BA85D0C008F3F41 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
 			requirement = {
@@ -426,6 +448,29 @@
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		88D3B8422BA85D0C008F3F41 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 88D3B8412BA85D0C008F3F41 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		88D3B8442BA85D0C008F3F41 /* FirebaseAnalyticsSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 88D3B8412BA85D0C008F3F41 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalyticsSwift;
+		};
+		88D3B8462BA85D0C008F3F41 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 88D3B8412BA85D0C008F3F41 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		88D3B8482BA85D0C008F3F41 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 88D3B8412BA85D0C008F3F41 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 88464CAD2B98953800C73FC1 /* Project object */;
 }
