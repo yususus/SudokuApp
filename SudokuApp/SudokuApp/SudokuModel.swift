@@ -43,5 +43,14 @@ struct SudokuModel {
         
         return true
     }
+    
+    func isComplete() -> Bool {
+        for row in cells {
+            if row.contains(0) {
+                return false
+            }
+        }
+        return true
+    }
 }
 
