@@ -8,82 +8,96 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var sudokuModel = SudokuModel() // SudokuModel'e değiştirildi
-    @State private var initialCells: [[Int]] = Array(repeating: Array(repeating: 0, count: 9), count: 9) // Hücrelerin ilk değerlerini saklar
-    @State private var selectedRow = -1
-    @State private var selectedColumn = -1
-    let selectableNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0] // 0 eklenmiştir
+    @StateObject private var viewModel = SudokuViewModel()
+    let selectableNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0]
+    @State private var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+    @State private var remainingSeconds = 10
+    @State private var isGameFinished = false
     
     var body: some View {
-        VStack() {
-            TimerView()
-            Spacer()
-            VStack(spacing: 0) {
-                ForEach(0..<9) { row in
-                    HStack(spacing: 0) {
-                        ForEach(0..<9) { column in
-                            Button(action: {
-                                // Tıklanan hücrenin konumunu güncelle
-                                self.selectedRow = row
-                                self.selectedColumn = column
-                            }) {
-                                Text("\(self.sudokuModel.cells[row][column])")
-                                    .foregroundStyle(Color.black)
-                                    .frame(width: 35, height: 35)
-                                    .background(self.backgroundColorForRow(row, column)) // Arka plan rengini belirle
-                                    .border(Color.black)
-                            }
-                        }
-                    }
+            VStack() {
+                HStack {
+                    Text("Kalan Süre:")
+                    Text("\(remainingSeconds)")
+                        .foregroundColor(remainingSeconds <= 10 ? .red : .black)
                 }
-            }
-            Spacer()
-            // Seçilebilir sayıları gösteren bir satır
-            VStack {
-                ForEach(0..<3) { rowIndex in
-                    HStack {
-                        ForEach(1..<4) { columnIndex in
-                            let number = rowIndex * 3 + columnIndex
-                            Button(action: {
-                                // Seçilen sayıyı tahtaya yerleştir
-                                if self.selectedRow != -1 && self.selectedColumn != -1 {
-                                    // Eğer hamle geçerliyse tahtaya yerleştir
-                                    if self.sudokuModel.isValidMove(row: self.selectedRow, column: self.selectedColumn, value: number) {
-                                        self.sudokuModel.cells[self.selectedRow][self.selectedColumn] = number
-                                    }
+                .padding()
+                .background(Color.gray.opacity(0.5))
+                Spacer()
+                VStack(spacing: 0) {
+                    ForEach(0..<9) { row in
+                        HStack(spacing: 0) {
+                            ForEach(0..<9) { column in
+                                Button(action: {
+                                    // Tıklanan hücrenin konumunu güncelle
+                                    viewModel.selectedRow = row
+                                    viewModel.selectedColumn = column
+                                }) {
+                                    Text("\(viewModel.sudokuModel.cells[row][column])")
+                                        .foregroundStyle(Color.black)
+                                        .frame(width: 35, height: 35)
+                                        .background(self.backgroundColorForRow(row, column))
+                                        .border(Color.black)
+                                        .onTapGesture {
+                                            viewModel.selectedRow = row
+                                            viewModel.selectedColumn = column
+                                        }
                                 }
-                            }) {
-                                Text("\(number)")
-                                    .foregroundStyle(Color.white)
-                                    .frame(width: 35, height: 35)
-                                    .background(Color.blue)
-                                    .clipShape(.rect(cornerRadius: 10))
                             }
                         }
                     }
                 }
-                // Reset butonu
-                Button(action: {
-                    // Seçilen hücreyi ilk haline getir
-                    if self.selectedRow != -1 && self.selectedColumn != -1 {
-                        self.sudokuModel.cells[self.selectedRow][self.selectedColumn] = self.initialCells[self.selectedRow][self.selectedColumn]
+                Spacer()
+                VStack {
+                    ForEach(0..<3) { rowIndex in
+                        HStack {
+                            ForEach(1..<4) { columnIndex in
+                                let number = rowIndex * 3 + columnIndex
+                                Button(action: {
+                                    // Seçilen sayıyı tahtaya yerleştir
+                                    viewModel.placeNumber(number: number)
+                                }) {
+                                    Text("\(number)")
+                                        .foregroundStyle(Color.white)
+                                        .frame(width: 35, height: 35)
+                                        .background(Color.blue)
+                                        .clipShape(.rect(cornerRadius: 10))
+                                }
+                            }
+                        }
                     }
-                }) {
-                    Text("Reset")
-                        .foregroundStyle(Color.white)
-                        .frame(width: 70, height: 35)
-                        .background(Color.red)
-                        .clipShape(.rect(cornerRadius: 10))
+                    Button(action: {
+                        viewModel.resetCell()
+                    }) {
+                        Text("Reset")
+                            .foregroundStyle(Color.white)
+                            .frame(width: 70, height: 35)
+                            .background(Color.red)
+                            .clipShape(.rect(cornerRadius: 10))
+                    }
                 }
+                .padding(.top, 10)
+                NavigationLink(destination: GameView(), isActive: $isGameFinished) {
+                           EmptyView()
+                       }
             }
-            .padding(.top, 10)
-        }.navigationBarBackButtonHidden()
             .padding()
             .onAppear {
                 // Oyun başladığında hücrelerin ilk değerlerini sakla
-                self.initialCells = self.sudokuModel.cells
+                viewModel.startGame()
+                timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
             }
-    }
+            .onReceive(timer) { _ in
+                if remainingSeconds > 0 {
+                    remainingSeconds -= 1
+                } else {
+                    // Zaman dolduğunda oyunu bitir
+                    isGameFinished = true
+                    timer.upstream.connect().cancel()
+                }
+            }
+        }
+    
     
     private func backgroundColorForRow(_ row: Int, _ column: Int) -> Color {
         let boxRow = row / 3
@@ -91,6 +105,8 @@ struct ContentView: View {
         return (boxRow + boxColumn) % 2 == 0 ? Color.cyan.opacity(0.5) : Color.white // 3x3'lük kutuların arka plan rengi
     }
 }
+
+
 
 
 

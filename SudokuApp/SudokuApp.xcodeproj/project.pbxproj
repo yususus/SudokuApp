@@ -11,6 +11,7 @@
 		88464CBB2B98953800C73FC1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88464CBA2B98953800C73FC1 /* ContentView.swift */; };
 		88464CBD2B98953A00C73FC1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 88464CBC2B98953A00C73FC1 /* Assets.xcassets */; };
 		88464CC02B98953A00C73FC1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 88464CBF2B98953A00C73FC1 /* Preview Assets.xcassets */; };
+		889137C42BAB20420098BD54 /* SudokuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889137C32BAB20420098BD54 /* SudokuViewModel.swift */; };
 		88986AE02BA0689000C4AFF8 /* SudokuModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88986ADF2BA0689000C4AFF8 /* SudokuModel.swift */; };
 		88986AE32BA06F6600C4AFF8 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88986AE22BA06F6600C4AFF8 /* GameView.swift */; };
 		88986AE52BA071E500C4AFF8 /* BackGround2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88986AE42BA071E500C4AFF8 /* BackGround2.swift */; };
@@ -19,7 +20,6 @@
 		88A9BA9C2B9A30DB00234C94 /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88A9BA9B2B9A30DB00234C94 /* Const.swift */; };
 		88A9BA9E2B9A327500234C94 /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88A9BA9D2B9A327500234C94 /* RegisterViewModel.swift */; };
 		88A9BAA02B9A3C5C00234C94 /* BackGround.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88A9BA9F2B9A3C5C00234C94 /* BackGround.swift */; };
-		88C9B4A02BA1B1E700845644 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C9B49F2BA1B1E700845644 /* TimerView.swift */; };
 		88D3B82A2BA85446008F3F41 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 88D3B8292BA85446008F3F41 /* GoogleService-Info.plist */; };
 		88D3B8432BA85D0C008F3F41 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 88D3B8422BA85D0C008F3F41 /* FirebaseAnalytics */; };
 		88D3B8452BA85D0C008F3F41 /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 88D3B8442BA85D0C008F3F41 /* FirebaseAnalyticsSwift */; };
@@ -34,6 +34,7 @@
 		88464CBA2B98953800C73FC1 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		88464CBC2B98953A00C73FC1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		88464CBF2B98953A00C73FC1 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		889137C32BAB20420098BD54 /* SudokuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SudokuViewModel.swift; sourceTree = "<group>"; };
 		88986ADF2BA0689000C4AFF8 /* SudokuModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SudokuModel.swift; sourceTree = "<group>"; };
 		88986AE22BA06F6600C4AFF8 /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
 		88986AE42BA071E500C4AFF8 /* BackGround2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackGround2.swift; sourceTree = "<group>"; };
@@ -42,7 +43,6 @@
 		88A9BA9B2B9A30DB00234C94 /* Const.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Const.swift; sourceTree = "<group>"; };
 		88A9BA9D2B9A327500234C94 /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
 		88A9BA9F2B9A3C5C00234C94 /* BackGround.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackGround.swift; sourceTree = "<group>"; };
-		88C9B49F2BA1B1E700845644 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
 		88D3B8292BA85446008F3F41 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		88D3B84A2BA86146008F3F41 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -87,6 +87,7 @@
 				88A9BA952B9A2F2600234C94 /* LoginAndRegister */,
 				88464CB82B98953800C73FC1 /* SudokuAppApp.swift */,
 				88986ADF2BA0689000C4AFF8 /* SudokuModel.swift */,
+				889137C32BAB20420098BD54 /* SudokuViewModel.swift */,
 				88464CBC2B98953A00C73FC1 /* Assets.xcassets */,
 				88D3B8292BA85446008F3F41 /* GoogleService-Info.plist */,
 				88464CBE2B98953A00C73FC1 /* Preview Content */,
@@ -107,7 +108,6 @@
 			children = (
 				88464CBA2B98953800C73FC1 /* ContentView.swift */,
 				88986AE22BA06F6600C4AFF8 /* GameView.swift */,
-				88C9B49F2BA1B1E700845644 /* TimerView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -220,7 +220,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				88C9B4A02BA1B1E700845644 /* TimerView.swift in Sources */,
 				88A9BA972B9A2F4100234C94 /* LoginView.swift in Sources */,
 				88A9BA9E2B9A327500234C94 /* RegisterViewModel.swift in Sources */,
 				88A9BA992B9A2F4F00234C94 /* RegisterView.swift in Sources */,
@@ -228,6 +227,7 @@
 				88986AE32BA06F6600C4AFF8 /* GameView.swift in Sources */,
 				88A9BAA02B9A3C5C00234C94 /* BackGround.swift in Sources */,
 				88986AE02BA0689000C4AFF8 /* SudokuModel.swift in Sources */,
+				889137C42BAB20420098BD54 /* SudokuViewModel.swift in Sources */,
 				88D3B84B2BA86146008F3F41 /* LoginViewModel.swift in Sources */,
 				88464CB92B98953800C73FC1 /* SudokuAppApp.swift in Sources */,
 				88986AE52BA071E500C4AFF8 /* BackGround2.swift in Sources */,
