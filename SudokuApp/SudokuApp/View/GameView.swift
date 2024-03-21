@@ -8,11 +8,14 @@
 import SwiftUI
 
 struct GameView: View {
+    @State private var totalScore = UserDataManager.shared.getTotalScore()
     var body: some View {
         NavigationView {
             VStack {
+                Text("Toplam Puan: \(totalScore)")
+                                .padding()
                 Spacer()
-                Text("Oyunu Başlat")
+                Text("SUDOKU ZAMANI")
                     .foregroundStyle(Color.black).fontWeight(.semibold).font(.largeTitle).fontDesign(.rounded)
                     .frame(width: 300, height: 100)
                     
