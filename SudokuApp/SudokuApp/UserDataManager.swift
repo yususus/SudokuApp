@@ -16,10 +16,12 @@ class UserDataManager {
         let totalScore = UserDefaults.standard.integer(forKey: totalScoreKey)
         let newTotalScore = totalScore + score
         UserDefaults.standard.set(newTotalScore, forKey: totalScoreKey)
+        
     }
     
     func getTotalScore() -> Int {
         return UserDefaults.standard.integer(forKey: totalScoreKey)
+        
     }
     
     func resetScore() {

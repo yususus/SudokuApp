@@ -9,6 +9,7 @@ import Foundation
 import SwiftUI
 
 class SudokuViewModel: ObservableObject {
+    @State private var totalScore = UserDataManager.shared.getTotalScore()
     @Published var sudokuModel = SudokuModel()
     @Published var initialCells: [[Int]] = Array(repeating: Array(repeating: 0, count: 9), count: 9)
     @Published var selectedRow = -1
@@ -26,13 +27,13 @@ class SudokuViewModel: ObservableObject {
         startTime = Date() // Oyun başladığı zamanı kaydet
     }
     
-
+    
     func resetCell() {
         if isGameStarted && selectedRow != -1 && selectedColumn != -1 {
             sudokuModel.cells[selectedRow][selectedColumn] = initialCells[selectedRow][selectedColumn]
         }
     }
-
+    
     func placeNumber(number: Int) {
         if isGameStarted && selectedRow != -1 && selectedColumn != -1 {
             if sudokuModel.isValidMove(row: selectedRow, column: selectedColumn, value: number) {
@@ -51,24 +52,34 @@ class SudokuViewModel: ObservableObject {
                 }
             }
         }
-        // Eğer boş hücre yoksa, oyun tamamlandı demektir, alerti göster
-        isGameFinished = true
+        isGameFinished = true // Oyun tamamlandı olarak işaretle
+        if isGameFinished == true{
+            print("oyun bitti")
+            let earnedScore = earningPoint() // Kazanılan puanı alın
+            UserDataManager.shared.saveScore(score: earnedScore)
+            self.totalScore = UserDataManager.shared.getTotalScore()
+        }
         timer.upstream.connect().cancel()
     }
     func earningPoint() -> Int {
-        guard let startTime = startTime else { return 0 }
-                let endTime = Date()
-                let elapsedTime = endTime.timeIntervalSince(startTime)
-                let remainingSeconds = max(0, 60 - Int(elapsedTime)) // Kalan süreyi hesapla (maksimum 60 saniye)
-                
-                // Puan hesaplama
-                var score = 0
-                if remainingSeconds >= 600 {
-                    score = 1000
-                } else {
-                    score = remainingSeconds / 6 // Her saniye için 100 puan
-                }
-                
-                return score
+      guard let startTime = startTime else { return 0 }
+      let endTime = Date()
+      let elapsedTime = endTime.timeIntervalSince(startTime)
+      
+      switch elapsedTime {
+      case 0..<300:
+        // 300 saniye içinde tamamlanırsa 1000 puan
+        return 1000
+      case 300..<500:
+        // 300 ile 500 saniye arasında tamamlanırsa 500 puan
+        return 500
+      case 500..<900:
+        // 500 ile 900 saniye arasında tamamlanırsa 100 puan
+        return 100
+      default:
+        // 900 saniyeden fazla sürerse puan verme
+        return 0
+      }
     }
+
 }

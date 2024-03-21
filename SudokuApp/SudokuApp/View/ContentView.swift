@@ -11,9 +11,8 @@ struct ContentView: View {
     @StateObject private var viewModel = SudokuViewModel()
     let selectableNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0]
     @State private var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
-    @State private var remainingSeconds = 600
+    @State private var remainingSeconds = 440
     @State private var isGameFinished = false
-    
     
     var body: some View {
         VStack() {
@@ -38,7 +37,6 @@ struct ContentView: View {
                                 
                             }) {
                                 Text("\(viewModel.sudokuModel.cells[row][column])")
-                                
                                     .foregroundStyle(Color.black)
                                     .frame(width: 35, height: 35)
                                     .background(self.backgroundColorForRow(row, column))
@@ -88,7 +86,6 @@ struct ContentView: View {
         }
         .padding()
         .onAppear {
-            // Oyun başladığında hücrelerin ilk değerlerini sakla
             viewModel.startGame()
             timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
         }
@@ -97,29 +94,33 @@ struct ContentView: View {
                 remainingSeconds -= 1
             } else {
                 // Zaman dolduğunda oyunu bitir
+                
+                viewModel.isGameFinished = true
                 viewModel.isTimeEnd = true
                 timer.upstream.connect().cancel()
             }
         }
         .alert(isPresented: $viewModel.isGameFinished) {
-            Alert(
-                title: Text("Tebrikler!"),
-                message: Text("Oyunu başarıyla tamamladınız."),
-                dismissButton: .default(Text("Tamam"), action: {
-                    viewModel.isGameFinished = false // Alert kapatıldıktan sonra isGameFinished'i sıfırla
-                    isGameFinished = true
-                }))
+            if viewModel.isTimeEnd {
+                   // Time's up alert
+                   return Alert(
+                     title: Text("Zaman Doldu!"),
+                     message: Text("Oyunu tamamlayamadınız."),
+                     dismissButton: .default(Text("Tamam"), action: {
+                       viewModel.isGameFinished = false
+                       isGameFinished = true // Update for NavigationLink
+                     }))
+                 } else {
+                   // Game completion alert (use the same logic as before)
+                   return Alert(
+                     title: Text("Tebrikler!"),
+                     message: Text("Oyunu başarıyla tamamladınız."),
+                     dismissButton: .default(Text("Tamam"), action: {
+                       viewModel.isGameFinished = false // Reset ViewModel flag
+                       isGameFinished = true // Update for NavigationLink
+                     }))
+                 }
         }
-        .alert(isPresented: $viewModel.isTimeEnd, content: {
-            Alert(
-                title: Text("Süre bitti!"),
-                message: Text("Üzgünüz süre bitti kazanamadınız."),
-                dismissButton: .default(Text("Tamam"), action: {
-                    viewModel.isGameFinished = false // Alert kapatıldıktan sonra isGameFinished'i sıfırla
-                    isGameFinished = true
-                }))
-        })
-        
     }
     
     
