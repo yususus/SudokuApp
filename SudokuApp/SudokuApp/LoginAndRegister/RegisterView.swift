@@ -5,6 +5,8 @@
 //  Created by yusuf on 7.03.2024.
 //
 
+
+/*
 import SwiftUI
 
 struct RegisterView: View {
@@ -47,3 +49,4 @@ struct RegisterView: View {
 #Preview {
     RegisterView()
 }
+*/

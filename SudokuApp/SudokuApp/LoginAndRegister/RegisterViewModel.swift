@@ -4,7 +4,7 @@
 //
 //  Created by yusuf on 7.03.2024.
 //
-
+/*
 import Foundation
 import SwiftUI
 import FirebaseAuth
@@ -57,3 +57,4 @@ class RegisterViewModel : ObservableObject{
         }
     }
 }
+*/

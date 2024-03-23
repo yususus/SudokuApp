@@ -23,10 +23,20 @@ class SudokuViewModel: ObservableObject {
     
     func startGame() {
         isGameStarted = true
-        initialCells = sudokuModel.cells
+        sudokuModel.initializeRandomNumbers() // Önce rastgele sayıları başlat
+        initialCells = sudokuModel.cells // Sonra başlangıç hücrelerini güncelle
         startTime = Date() // Oyun başladığı zamanı kaydet
     }
-    
+
+    func selectCell(row: Int, column: Int) {
+        if initialCells[row][column] == 0 {
+                selectedRow = row
+                selectedColumn = column
+            } else {
+                selectedRow = -1
+                selectedColumn = -1
+            }
+        }
     
     func resetCell() {
         if isGameStarted && selectedRow != -1 && selectedColumn != -1 {
@@ -36,12 +46,14 @@ class SudokuViewModel: ObservableObject {
     
     func placeNumber(number: Int) {
         if isGameStarted && selectedRow != -1 && selectedColumn != -1 {
-            if sudokuModel.isValidMove(row: selectedRow, column: selectedColumn, value: number) {
+            // Yalnızca başlangıçta boş olan hücrelere sayı yerleştirilebilir
+            if initialCells[selectedRow][selectedColumn] == 0 && sudokuModel.isValidMove(row: selectedRow, column: selectedColumn, value: number) {
                 sudokuModel.cells[selectedRow][selectedColumn] = number
             }
         }
         checkGameCompletion()
     }
+
     func checkGameCompletion() {
         // Tüm hücrelerin değerlerini kontrol et
         for row in 0..<9 {

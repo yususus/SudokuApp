@@ -6,6 +6,8 @@
 //
 
 import SwiftUI
+
+/*
 import FirebaseCore
 import FirebaseAuth
 
@@ -29,9 +31,10 @@ class AppDelegate: NSObject, UIApplicationDelegate {
     
     var window: UIWindow?
 }
+ */
+
 @main
 struct SudokuAppApp: App {
-    @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     var body: some Scene {
         WindowGroup {
             GameView()

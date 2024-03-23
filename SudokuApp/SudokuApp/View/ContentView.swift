@@ -11,7 +11,7 @@ struct ContentView: View {
     @StateObject private var viewModel = SudokuViewModel()
     let selectableNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0]
     @State private var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
-    @State private var remainingSeconds = 440
+    @State private var remainingSeconds = 200
     @State private var isGameFinished = false
     
     var body: some View {
@@ -32,11 +32,11 @@ struct ContentView: View {
                         ForEach(0..<9) { column in
                             Button(action: {
                                 // Tıklanan hücrenin konumunu güncelle
-                                viewModel.selectedRow = row
-                                viewModel.selectedColumn = column
+                                viewModel.selectCell(row: row, column: column)
                                 
                             }) {
-                                Text("\(viewModel.sudokuModel.cells[row][column])")
+                                Text(viewModel.sudokuModel.cells[row][column] != 0 ? "\(viewModel.sudokuModel.cells[row][column])" : " ")
+                                    .fontWeight(viewModel.initialCells[row][column] != 0 ? .semibold : .regular)
                                     .foregroundStyle(Color.black)
                                     .frame(width: 35, height: 35)
                                     .background(self.backgroundColorForRow(row, column))
@@ -102,24 +102,24 @@ struct ContentView: View {
         }
         .alert(isPresented: $viewModel.isGameFinished) {
             if viewModel.isTimeEnd {
-                   // Time's up alert
-                   return Alert(
-                     title: Text("Zaman Doldu!"),
-                     message: Text("Oyunu tamamlayamadınız."),
-                     dismissButton: .default(Text("Tamam"), action: {
-                       viewModel.isGameFinished = false
-                       isGameFinished = true // Update for NavigationLink
-                     }))
-                 } else {
-                   // Game completion alert (use the same logic as before)
-                   return Alert(
-                     title: Text("Tebrikler!"),
-                     message: Text("Oyunu başarıyla tamamladınız."),
-                     dismissButton: .default(Text("Tamam"), action: {
-                       viewModel.isGameFinished = false // Reset ViewModel flag
-                       isGameFinished = true // Update for NavigationLink
-                     }))
-                 }
+                // Time's up alert
+                return Alert(
+                    title: Text("Zaman Doldu!"),
+                    message: Text("Oyunu tamamlayamadınız."),
+                    dismissButton: .default(Text("Tamam"), action: {
+                        viewModel.isGameFinished = false
+                        isGameFinished = true // Update for NavigationLink
+                    }))
+            } else {
+                // Game completion alert (use the same logic as before)
+                return Alert(
+                    title: Text("Tebrikler!"),
+                    message: Text("Oyunu başarıyla tamamladınız."),
+                    dismissButton: .default(Text("Tamam"), action: {
+                        viewModel.isGameFinished = false // Reset ViewModel flag
+                        isGameFinished = true // Update for NavigationLink
+                    }))
+            }
         }
     }
     
