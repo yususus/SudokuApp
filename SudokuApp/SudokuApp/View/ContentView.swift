@@ -11,15 +11,14 @@ struct ContentView: View {
     @StateObject private var viewModel = SudokuViewModel()
     let selectableNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0]
     @State private var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
-    @State private var remainingSeconds = 200
+    @State private var remainingSeconds = 0
     @State private var isGameFinished = false
     
     var body: some View {
         VStack() {
             HStack {
-                Text("Kalan Süre:").font(.title3)
-                Text("\(remainingSeconds)").fontWeight(.bold).font(.title3)
-                    .foregroundColor(remainingSeconds <= 10 ? .red : .black)
+                Text("\(timeString(remainingSeconds))").fontWeight(.bold).font(.title3)
+                    .foregroundColor(remainingSeconds >= 1800 ? .red : .black)
             }
             .frame(width: 150)
             .padding()
@@ -90,29 +89,10 @@ struct ContentView: View {
             timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
         }
         .onReceive(timer) { _ in
-            if remainingSeconds > 0 {
-                remainingSeconds -= 1
-            } else {
-                // Zaman dolduğunda oyunu bitir
-                
-                viewModel.isGameFinished = true
-                viewModel.isTimeEnd = true
-                timer.upstream.connect().cancel()
-            }
+            remainingSeconds += 1
         }
         .alert(isPresented: $viewModel.isGameFinished) {
-            if viewModel.isTimeEnd {
-                // Time's up alert
-                return Alert(
-                    title: Text("Zaman Doldu!"),
-                    message: Text("Oyunu tamamlayamadınız."),
-                    dismissButton: .default(Text("Tamam"), action: {
-                        viewModel.isGameFinished = false
-                        isGameFinished = true // Update for NavigationLink
-                    }))
-            } else {
-                // Game completion alert (use the same logic as before)
-                return Alert(
+             Alert(
                     title: Text("Tebrikler!"),
                     message: Text("Oyunu başarıyla tamamladınız."),
                     dismissButton: .default(Text("Tamam"), action: {
@@ -120,20 +100,21 @@ struct ContentView: View {
                         isGameFinished = true // Update for NavigationLink
                     }))
             }
-        }
+        .background()
+        
     }
     
-    
+    private func timeString(_ totalSeconds: Int) -> String {
+        let minutes = totalSeconds / 60
+        let seconds = totalSeconds % 60
+        return String(format: "%02d:%02d", minutes, seconds)
+    }
     private func backgroundColorForRow(_ row: Int, _ column: Int) -> Color {
         let boxRow = row / 3
         let boxColumn = column / 3
         return (boxRow + boxColumn) % 2 == 0 ? Color.cyan.opacity(0.5) : Color.white // 3x3'lük kutuların arka plan rengi
     }
 }
-
-
-
-
 
 #Preview {
     ContentView()

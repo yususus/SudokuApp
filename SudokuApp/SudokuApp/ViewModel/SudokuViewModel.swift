@@ -14,20 +14,22 @@ class SudokuViewModel: ObservableObject {
     @Published var initialCells: [[Int]] = Array(repeating: Array(repeating: 0, count: 9), count: 9)
     @Published var selectedRow = -1
     @Published var selectedColumn = -1
-    @Published var isGameStarted = false // Oyunun başlayıp başlamadığını kontrol eder
+    @Published var isGameStarted = false // start game bool
     @Published var isGameFinished = false
-    @Published var isTimeEnd = false
+
     @Published var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
-    var startTime: Date? //başlangıç zamanı kaydetme işlemi
+    var startTime: Date?
     
     func startGame() {
         isGameStarted = true
-        sudokuModel.initializeRandomNumbers() // Önce rastgele sayıları başlat
-        initialCells = sudokuModel.cells // Sonra başlangıç hücrelerini güncelle
-        startTime = Date() // Oyun başladığı zamanı kaydet
+        sudokuModel.fillBoard() // Önce rastgele sayıları başlat, initialize random cells first
+        initialCells = sudokuModel.cells // Sonra başlangıç hücrelerini güncelle, Then update the starting cells
+        startTime = Date()
     }
-
+    // önce rastgele sayıları başlatma nedenimiz bu sayıları oyunun içine gömmek gibi düşünülebilir.
+    // The reason why we initialize random numbers first can be thought of as embedding these numbers into the game.
+    
     func selectCell(row: Int, column: Int) {
         if initialCells[row][column] == 0 {
                 selectedRow = row
@@ -37,7 +39,7 @@ class SudokuViewModel: ObservableObject {
                 selectedColumn = -1
             }
         }
-    
+    //only resets the selected cells
     func resetCell() {
         if isGameStarted && selectedRow != -1 && selectedColumn != -1 {
             sudokuModel.cells[selectedRow][selectedColumn] = initialCells[selectedRow][selectedColumn]
@@ -46,7 +48,7 @@ class SudokuViewModel: ObservableObject {
     
     func placeNumber(number: Int) {
         if isGameStarted && selectedRow != -1 && selectedColumn != -1 {
-            // Yalnızca başlangıçta boş olan hücrelere sayı yerleştirilebilir
+            // başlangıçta boş olan hücrelere sayı yerleştir
             if initialCells[selectedRow][selectedColumn] == 0 && sudokuModel.isValidMove(row: selectedRow, column: selectedColumn, value: number) {
                 sudokuModel.cells[selectedRow][selectedColumn] = number
             }
@@ -55,19 +57,19 @@ class SudokuViewModel: ObservableObject {
     }
 
     func checkGameCompletion() {
-        // Tüm hücrelerin değerlerini kontrol et
         for row in 0..<9 {
             for column in 0..<9 {
-                // Herhangi bir boş hücre varsa, oyun devam ediyor demektir
+                // boş hücre varsa oyun devam eder
+                //if there is an empty cell , the game continues
                 if sudokuModel.cells[row][column] == 0 {
                     return
                 }
             }
         }
-        isGameFinished = true // Oyun tamamlandı olarak işaretle
+        isGameFinished = true
         if isGameFinished == true{
             print("oyun bitti")
-            let earnedScore = earningPoint() // Kazanılan puanı alın
+            let earnedScore = earningPoint() // get earned points
             UserDataManager.shared.saveScore(score: earnedScore)
             self.totalScore = UserDataManager.shared.getTotalScore()
         }
@@ -80,16 +82,20 @@ class SudokuViewModel: ObservableObject {
       
       switch elapsedTime {
       case 0..<300:
-        // 300 saniye içinde tamamlanırsa 1000 puan
+        // 5dk 1000 puan
         return 1000
-      case 300..<500:
-        // 300 ile 500 saniye arasında tamamlanırsa 500 puan
+      case 300..<600:
+        return 750
+      case 600..<900:
         return 500
-      case 500..<900:
-        // 500 ile 900 saniye arasında tamamlanırsa 100 puan
+      case 900..<1200:
+        return 250
+      case 1200..<1500:
         return 100
+      case 1500..<1800:
+        return 50
       default:
-        // 900 saniyeden fazla sürerse puan verme
+        // 30dk sonra puan yok
         return 0
       }
     }

@@ -11,6 +11,14 @@ import SwiftUI
 class Const{
     static let alertMessage: String = "Oyun süresi bitti."
     @ViewBuilder
+    static func PointsText(minutes: String, point: String) -> some View{
+        Text("\(minutes) dakika içinde bitirirseniz \(point) puan").fontWeight(.bold)
+    }
+    
+    
+    
+    /*
+    @ViewBuilder
     static func CustomTextField(text : Binding<String>, placeHolder : String)->  some View {
         HStack(alignment: .center) {
             Image(systemName: "envelope").resizable().aspectRatio(contentMode: .fit).frame(maxWidth: 25,maxHeight: 25)
@@ -84,4 +92,5 @@ class Const{
         .padding(.horizontal, 20)
         
     }
+     */
 }
