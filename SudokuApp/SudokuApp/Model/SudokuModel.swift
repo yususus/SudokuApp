@@ -32,7 +32,8 @@ struct SudokuModel {
         if cells[currentRow][currentColumn] != 0 {
             return solve(row: currentRow, column: currentColumn + 1)
         }
-        for value in 1...9 {
+        let values = [1, 2, 3, 4, 5, 6, 7, 8, 9].shuffled()
+        for value in values {
             if isValidMove(row: currentRow, column: currentColumn, value: value) {
                 cells[currentRow][currentColumn] = value
                 if solve(row: currentRow, column: currentColumn + 1) {
@@ -43,6 +44,7 @@ struct SudokuModel {
         }
         return false // not solve
     }
+
 
     // random remove clues
     private mutating func removeClues(count: Int) {
@@ -161,20 +163,77 @@ mutating func initializeRandomNumbers() {
 
  */
 /*
- original
  
- mutating func initializeRandomNumbers() {
-     // Sudoku oyununda rastgele sayılarla doldurulmuş bir başlangıç durumu oluştur
-     for _ in 0..<20 { // Bu sayıyı isteğe göre değiştirebilirsin, daha az veya daha çok sayıda hücreyi başlangıçta doldurmak için
-         let randomRow = Int.random(in: 0..<9)
-         let randomColumn = Int.random(in: 0..<9)
-         let randomValue = Int.random(in: 1...9) // 0 olmamalı, Sudoku'da rakamlar 1 ila 9 arasında
+ private var board: [[Int]] = [[Int]](repeating: [Int](repeating: 0, count: 9), count: 9)
+     
+     mutating func generate() -> [[Int]]? {
+         clearBoard()
+         return fillBoard() ? board : nil
+     }
+     
+     private mutating func clearBoard() {
+         board = [[Int]](repeating: [Int](repeating: 0, count: 9), count: 9)
+     }
+     
+     private mutating func fillBoard() -> Bool {
+         return fillCell(row: 0, column: 0)
+     }
+     
+     private mutating func fillCell(row: Int, column: Int) -> Bool {
+         var currentRow = row
+         var currentColumn = column
          
-         // Eğer bu hücre boşsa ve rastgele seçilen sayı bu hücreye uyar, o zaman yerleştir
-         if cells[randomRow][randomColumn] == 0 && isValidMove(row: randomRow, column: randomColumn, value: randomValue) {
-                         cells[randomRow][randomColumn] = randomValue
-             initialCells[randomRow][randomColumn] = randomValue // Başlangıç durumunu kaydet
-                     }
+         // If we reached the end of the board, return true to indicate success
+         if currentRow == 9 {
+             return true
+         }
+         
+         // Move to the next row if we reached the end of the current row
+         if currentColumn == 9 {
+             currentRow += 1
+             currentColumn = 0
+             return fillCell(row: currentRow, column: currentColumn)
+         }
+         
+         // Generate random permutation of numbers from 1 to 9
+         var numbers = Array(1...9)
+         numbers.shuffle()
+         
+         // Try filling the cell with each number in the permutation
+         for number in numbers {
+             if isValidMove(row: currentRow, column: currentColumn, value: number) {
+                 board[currentRow][currentColumn] = number
+                 if fillCell(row: currentRow, column: currentColumn + 1) {
+                     return true
+                 }
+                 // If filling the cell with this number didn't lead to a solution, backtrack
+                 board[currentRow][currentColumn] = 0
+             }
+         }
+         
+         return false
+     }
+     
+     private func isValidMove(row: Int, column: Int, value: Int) -> Bool {
+         // Check if the value is already present in the row or column
+         for i in 0..<9 {
+             if board[row][i] == value || board[i][column] == value {
+                 return false
+             }
+         }
+         
+         // Check if the value is already present in the 3x3 subgrid
+         let startRow = row - row % 3
+         let startColumn = column - column % 3
+         for i in startRow..<startRow + 3 {
+             for j in startColumn..<startColumn + 3 {
+                 if board[i][j] == value {
+                     return false
+                 }
+             }
+         }
+         
+         return true
      }
  }
  */
