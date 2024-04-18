@@ -9,10 +9,10 @@ import Foundation
 import SwiftUI
 
 class Const{
-    static let alertMessage: String = "Oyun süresi bitti."
+    static let alertMessage: String = "Game time is over."
     @ViewBuilder
     static func PointsText(minutes: String, point: String) -> some View{
-        Text("\(minutes) dakika içinde bitirirseniz \(point) puan").fontWeight(.bold)
+        Text("If you finish in \(minutes) minutes you will get \(point) points").fontWeight(.bold)
     }
     
     
