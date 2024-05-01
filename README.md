@@ -15,5 +15,5 @@ https://apps.apple.com/app/genius-sudoku/id6498926590
 
 
 <img width="294" alt="Ekran Resmi 2024-04-23 09 09 42" src="https://github.com/yususus/SudokuApp/assets/77053475/4a0a25a4-8e0d-431c-82a5-7a50f4003f5f">
-<img width="294" alt="Ekran Resmi 2024-04-23 09 09 52" src="https://github.com/yususus/SudokuApp/assets/77053475/8f4c4d77-50fe-4dbd-821c-7f608dd77d6e">
+<img width="294" alt="Ekran Resmi 2024-05-01" src= "https://github.com/yususus/SudokuApp/assets/77053475/e485d09e-8b7c-4769-bf2a-7d5c231f94fd">
 <img width="294" alt="Ekran Resmi 2024-04-23 09 10 01" src="https://github.com/yususus/SudokuApp/assets/77053475/1091b8e6-f777-47bd-bb51-0d946f65f9e0">
