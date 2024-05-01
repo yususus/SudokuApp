@@ -23,7 +23,7 @@ struct SplashBackGround: View {
                                 .font(.custom("", size: 70)).padding().foregroundStyle(Color.teal)
                                 .onAppear {
                                         withAnimation(Animation.linear(duration: 5).repeatForever(autoreverses: false)) {
-                                            rotation1 = 360
+                                            rotation1 = 4800
                                         }
                                     }
                         }.frame(width: 400, height: 250,alignment: .topTrailing).blur(radius: 3)
@@ -31,7 +31,7 @@ struct SplashBackGround: View {
                         VStack {
                             Text("2").rotationEffect(.degrees(rotation2)).font(.custom("", size: 70)).padding().foregroundStyle(Color.green).onAppear {
                                 withAnimation(Animation.linear(duration: 5).repeatForever(autoreverses: false)) {
-                                    rotation2 = 360
+                                    rotation2 = 4800
                                 }
                             }
 
@@ -41,7 +41,7 @@ struct SplashBackGround: View {
                             Text("3").rotationEffect(.degrees(rotation3)).font(.custom("", size: 70)).foregroundStyle(Color.orange)
                                 .padding().onAppear {
                                     withAnimation(Animation.linear(duration: 5).repeatForever(autoreverses: false)) {
-                                        rotation3 = 360
+                                        rotation3 = 4800
                                     }
                                 }
 
@@ -49,7 +49,7 @@ struct SplashBackGround: View {
                     VStack {
                         Text("8").rotationEffect(.degrees(rotation4)).font(.custom("", size: 70)).padding().foregroundStyle(Color.red).onAppear {
                             withAnimation(Animation.linear(duration: 5).repeatForever(autoreverses: false)) {
-                                rotation4 = 360
+                                rotation4 = 3600
                             }
                         }
 
@@ -59,7 +59,7 @@ struct SplashBackGround: View {
                         Text("7").rotationEffect(.degrees(rotation5)).font(.custom("", size: 70)).foregroundStyle(Color.yellow)
                             .padding().onAppear {
                                 withAnimation(Animation.linear(duration: 5).repeatForever(autoreverses: false)) {
-                                    rotation5 = 360
+                                    rotation5 = 3600
                                 }
                             }
 
@@ -72,7 +72,7 @@ struct SplashBackGround: View {
                         VStack {
                             Text("4").rotationEffect(.degrees(rotation1)).font(.custom("", size: 70)).padding().foregroundStyle(Color.purple).onAppear {
                                 withAnimation(Animation.linear(duration: 5).repeatForever(autoreverses: false)) {
-                                    rotation1 = 360
+                                    rotation1 = 3600
                                 }
                             }
 
@@ -81,7 +81,7 @@ struct SplashBackGround: View {
                         VStack {
                             Text("5").rotationEffect(.degrees(rotation3)).font(.custom("", size: 70)).padding().foregroundStyle(Color.brown).onAppear {
                                 withAnimation(Animation.linear(duration: 5).repeatForever(autoreverses: false)) {
-                                    rotation3 = 360
+                                    rotation3 = 4800
                                 }
                             }
 
@@ -90,7 +90,7 @@ struct SplashBackGround: View {
                     VStack {
                         Text("3").rotationEffect(.degrees(rotation2)).font(.custom("", size: 70)).padding().foregroundStyle(Color.orange).onAppear {
                             withAnimation(Animation.linear(duration: 5).repeatForever(autoreverses: false)) {
-                                rotation2 = 360
+                                rotation2 = 4800
                             }
                         }
 
@@ -98,7 +98,7 @@ struct SplashBackGround: View {
                         VStack {
                             Text("6").rotationEffect(.degrees(rotation4)).font(.custom("", size: 70)).padding().foregroundStyle(Color.indigo).onAppear {
                                 withAnimation(Animation.linear(duration: 5).repeatForever(autoreverses: false)) {
-                                    rotation4 = 360
+                                    rotation4 = 3600
                                 }
                             }
 
@@ -111,7 +111,7 @@ struct SplashBackGround: View {
                     VStack {
                         Text("7").rotationEffect(.degrees(rotation5)).font(.custom("", size: 70)).padding().foregroundStyle(Color.mint).onAppear {
                             withAnimation(Animation.linear(duration: 5).repeatForever(autoreverses: false)) {
-                                rotation5 = 360
+                                rotation5 = 3600
                             }
                         }
 
@@ -120,7 +120,7 @@ struct SplashBackGround: View {
                     VStack {
                         Text("8").rotationEffect(.degrees(rotation3)).font(.custom("", size: 70)).padding().foregroundStyle(Color.yellow).onAppear {
                             withAnimation(Animation.linear(duration: 5).repeatForever(autoreverses: false)) {
-                                rotation3 = 360
+                                rotation3 = 3600
                             }
                         }
 
@@ -129,7 +129,7 @@ struct SplashBackGround: View {
                 VStack {
                     Text("5").rotationEffect(.degrees(rotation2)).font(.custom("", size: 70)).padding().foregroundStyle(Color.purple).onAppear {
                         withAnimation(Animation.linear(duration: 5).repeatForever(autoreverses: false)) {
-                            rotation2 = 360
+                            rotation2 = 4800
                         }
                     }
 
@@ -137,7 +137,7 @@ struct SplashBackGround: View {
                 VStack {
                     Text("1").rotationEffect(.degrees(rotation4)).font(.custom("", size: 70)).padding().foregroundStyle(Color.green).onAppear {
                         withAnimation(Animation.linear(duration: 5).repeatForever(autoreverses: false)) {
-                            rotation4 = 360
+                            rotation4 = 4800
                         }
                     }
 
@@ -145,7 +145,7 @@ struct SplashBackGround: View {
                     VStack {
                         Text("9").rotationEffect(.degrees(rotation1)).font(.custom("", size: 70)).padding().foregroundStyle(Color.red).onAppear {
                             withAnimation(Animation.linear(duration: 5).repeatForever(autoreverses: false)) {
-                                rotation1 = 360
+                                rotation1 = 4800
                             }
                         }
 

@@ -16,7 +16,7 @@ struct GameView: View {
     
     var body: some View {
         ZStack {
-            NavigationView {
+            NavigationStack {
                 VStack {
                     HStack {
                         Text("Total Point: \(totalScore)")

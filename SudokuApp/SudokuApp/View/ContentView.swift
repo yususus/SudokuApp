@@ -110,6 +110,19 @@ struct ContentView: View {
         return String(format: "%02d:%02d", minutes, seconds)
     }
     private func backgroundColorForRow(_ row: Int, _ column: Int) -> Color {
+        
+        if viewModel.selectedRow == row && viewModel.selectedColumn == column {
+            // Seçilen hücrenin rengini değiştirme işlemi
+            return Color.yellow.opacity(1)
+        }
+        
+        if row == viewModel.selectedRow || column == viewModel.selectedColumn {
+            // Yatay veya dikey hizasında bulunan hücrelerin rengini değiştirme
+            return Color.yellow.opacity(0.4)
+        }
+        
+    
+    
         let boxRow = row / 3
         let boxColumn = column / 3
         return (boxRow + boxColumn) % 2 == 0 ? Color.cyan.opacity(0.5) : Color.white // 3x3'lük kutuların arka plan rengi
