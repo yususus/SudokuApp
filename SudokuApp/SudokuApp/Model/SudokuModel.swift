@@ -15,7 +15,6 @@ struct SudokuModel {
     init() {
         cells = Array(repeating: Array(repeating: 0, count: 9), count: 9)
         initialCells = Array(repeating: Array(repeating: 0, count: 9), count: 9)
-        fillBoard()
     }
 
     // Backtracking with solve sudoku
@@ -61,14 +60,15 @@ struct SudokuModel {
     }
 
     // fill the board and removeClues
-    mutating func fillBoard() {
+    mutating func fillBoard(cluesToRemove: Int) {
         if solve() {
             initialCells = cells
-            removeClues(count: 60)
+            removeClues(count: cluesToRemove)
         } else {
             print("Bir çözüm bulunamadı.")
         }
     }
+ 
 
  
     mutating func isValidMove(row: Int, column: Int, value: Int) -> Bool {

@@ -12,16 +12,13 @@
 		88464CBB2B98953800C73FC1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88464CBA2B98953800C73FC1 /* ContentView.swift */; };
 		88464CBD2B98953A00C73FC1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 88464CBC2B98953A00C73FC1 /* Assets.xcassets */; };
 		88464CC02B98953A00C73FC1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 88464CBF2B98953A00C73FC1 /* Preview Assets.xcassets */; };
+		886FF14E2C89DEEA000ABF57 /* SelectDiffuclty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886FF14D2C89DEEA000ABF57 /* SelectDiffuclty.swift */; };
 		889137C42BAB20420098BD54 /* SudokuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889137C32BAB20420098BD54 /* SudokuViewModel.swift */; };
 		889137C62BAC2ED30098BD54 /* UserDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889137C52BAC2ED30098BD54 /* UserDataManager.swift */; };
 		88986AE02BA0689000C4AFF8 /* SudokuModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88986ADF2BA0689000C4AFF8 /* SudokuModel.swift */; };
 		88986AE32BA06F6600C4AFF8 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88986AE22BA06F6600C4AFF8 /* GameView.swift */; };
-		88A9BA972B9A2F4100234C94 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88A9BA962B9A2F4100234C94 /* LoginView.swift */; };
-		88A9BA992B9A2F4F00234C94 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88A9BA982B9A2F4F00234C94 /* RegisterView.swift */; };
 		88A9BA9C2B9A30DB00234C94 /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88A9BA9B2B9A30DB00234C94 /* Const.swift */; };
-		88A9BA9E2B9A327500234C94 /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88A9BA9D2B9A327500234C94 /* RegisterViewModel.swift */; };
 		88A9BAA02B9A3C5C00234C94 /* BackGround.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88A9BA9F2B9A3C5C00234C94 /* BackGround.swift */; };
-		88D3B84B2BA86146008F3F41 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D3B84A2BA86146008F3F41 /* LoginViewModel.swift */; };
 		88D3D9932BD13B7900CEE6C3 /* OpenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D3D9922BD13B7900CEE6C3 /* OpenView.swift */; };
 		88D3D9952BD13BCA00CEE6C3 /* SplashBackGround.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D3D9942BD13BCA00CEE6C3 /* SplashBackGround.swift */; };
 /* End PBXBuildFile section */
@@ -34,16 +31,13 @@
 		88464CBA2B98953800C73FC1 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; usesTabs = 0; };
 		88464CBC2B98953A00C73FC1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		88464CBF2B98953A00C73FC1 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		886FF14D2C89DEEA000ABF57 /* SelectDiffuclty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectDiffuclty.swift; sourceTree = "<group>"; };
 		889137C32BAB20420098BD54 /* SudokuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SudokuViewModel.swift; sourceTree = "<group>"; };
 		889137C52BAC2ED30098BD54 /* UserDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataManager.swift; sourceTree = "<group>"; };
 		88986ADF2BA0689000C4AFF8 /* SudokuModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SudokuModel.swift; sourceTree = "<group>"; };
 		88986AE22BA06F6600C4AFF8 /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
-		88A9BA962B9A2F4100234C94 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
-		88A9BA982B9A2F4F00234C94 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		88A9BA9B2B9A30DB00234C94 /* Const.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Const.swift; sourceTree = "<group>"; };
-		88A9BA9D2B9A327500234C94 /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
 		88A9BA9F2B9A3C5C00234C94 /* BackGround.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackGround.swift; sourceTree = "<group>"; };
-		88D3B84A2BA86146008F3F41 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		88D3D9922BD13B7900CEE6C3 /* OpenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenView.swift; sourceTree = "<group>"; };
 		88D3D9942BD13BCA00CEE6C3 /* SplashBackGround.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashBackGround.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -110,7 +104,6 @@
 				88986AE12BA06F2500C4AFF8 /* View */,
 				88A9BA9A2B9A30D000234C94 /* Const */,
 				88464CB82B98953800C73FC1 /* SudokuAppApp.swift */,
-				88A9BA952B9A2F2600234C94 /* LoginAndRegister */,
 				88464CBC2B98953A00C73FC1 /* Assets.xcassets */,
 				88464CBE2B98953A00C73FC1 /* Preview Content */,
 			);
@@ -145,21 +138,11 @@
 			path = Background;
 			sourceTree = "<group>";
 		};
-		88A9BA952B9A2F2600234C94 /* LoginAndRegister */ = {
-			isa = PBXGroup;
-			children = (
-				88A9BA962B9A2F4100234C94 /* LoginView.swift */,
-				88A9BA982B9A2F4F00234C94 /* RegisterView.swift */,
-				88A9BA9D2B9A327500234C94 /* RegisterViewModel.swift */,
-				88D3B84A2BA86146008F3F41 /* LoginViewModel.swift */,
-			);
-			path = LoginAndRegister;
-			sourceTree = "<group>";
-		};
 		88A9BA9A2B9A30D000234C94 /* Const */ = {
 			isa = PBXGroup;
 			children = (
 				88A9BA9B2B9A30DB00234C94 /* Const.swift */,
+				886FF14D2C89DEEA000ABF57 /* SelectDiffuclty.swift */,
 			);
 			path = Const;
 			sourceTree = "<group>";
@@ -240,16 +223,13 @@
 			files = (
 				88D3D9932BD13B7900CEE6C3 /* OpenView.swift in Sources */,
 				88D3D9952BD13BCA00CEE6C3 /* SplashBackGround.swift in Sources */,
-				88A9BA972B9A2F4100234C94 /* LoginView.swift in Sources */,
-				88A9BA9E2B9A327500234C94 /* RegisterViewModel.swift in Sources */,
-				88A9BA992B9A2F4F00234C94 /* RegisterView.swift in Sources */,
+				886FF14E2C89DEEA000ABF57 /* SelectDiffuclty.swift in Sources */,
 				88464CBB2B98953800C73FC1 /* ContentView.swift in Sources */,
 				88986AE32BA06F6600C4AFF8 /* GameView.swift in Sources */,
 				88A9BAA02B9A3C5C00234C94 /* BackGround.swift in Sources */,
 				88986AE02BA0689000C4AFF8 /* SudokuModel.swift in Sources */,
 				889137C62BAC2ED30098BD54 /* UserDataManager.swift in Sources */,
 				889137C42BAB20420098BD54 /* SudokuViewModel.swift in Sources */,
-				88D3B84B2BA86146008F3F41 /* LoginViewModel.swift in Sources */,
 				88464CB92B98953800C73FC1 /* SudokuAppApp.swift in Sources */,
 				88A9BA9C2B9A30DB00234C94 /* Const.swift in Sources */,
 				883BBA982BB03574007EE170 /* BackGround3.swift in Sources */,
@@ -398,12 +378,12 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.yusufaydin.SudokuApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -436,12 +416,12 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.yusufaydin.SudokuApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

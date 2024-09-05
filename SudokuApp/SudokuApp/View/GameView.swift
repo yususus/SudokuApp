@@ -13,7 +13,9 @@ struct GameView: View {
     @State var isStart = false
     @State var details = false
     @State var isLoading = false
-    
+    @State var navigateToContentView = false
+    @State private var selectedDifficulty: SudokuViewModel.Difficulty = .medium // Varsayılan zorluk seviyesi
+
     var body: some View {
         ZStack {
             NavigationStack {
@@ -25,10 +27,9 @@ struct GameView: View {
                             self.details.toggle()
                         }) {
                             Image(systemName: "info.circle.fill")
-                                .resizable().frame(width: 25,height: 25)
+                                .resizable().frame(width: 25, height: 25)
                                 .foregroundColor(.black)
                         }
-                        //info button contents
                         .contextMenu {
                             VStack {
                                 Const.PointsText(minutes: "5", point: "1000")
@@ -37,56 +38,58 @@ struct GameView: View {
                                 Const.PointsText(minutes: "20", point: "250")
                                 Const.PointsText(minutes: "25", point: "100")
                                 Const.PointsText(minutes: "30", point: "50")
-                                
                             }
                         }
-                        
                     }
-                    
+
                     VStack {
                         Spacer()
                         Text("SUDOKU TIME")
-                            .foregroundStyle(Color.black).fontWeight(.semibold).font(.largeTitle).fontDesign(.rounded)
-                            .frame(width: 300, height: 100)
+                            
+                            .font(.system(size: 45))
+                            .fontWeight(.bold)
+                            .foregroundColor(.black)
+                            .shadow(color: .black.opacity(0.8), radius: 4, x: 3, y: 3) // Gölge efekti
+                            .padding()
+                            
+                            
+                            .padding()
+
                         Spacer()
-                        
-                        NavigationLink(destination: ContentView(), isActive: $isStart) {
-                            Button(action: {
-                                self.isLoading = true
-                                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                                    self.isStart = true
-                                    self.viewModel.startGame() // Oyunu başlat ve zamanı kaydet
-                                    self.isLoading = false
-                                }
-                            }) {
-                                Text("Start").font(.title2)
-                                    .fontDesign(.rounded)
-                                    .frame(width: 150, height: 50)
-                                    .background(Color.black)
-                                    .foregroundColor(.white)
-                                    .clipShape(RoundedRectangle(cornerRadius: 10))
-                            }
+
+                        HStack {
+                            
+                            SelectDiffuclty(title: "Easy", color: .green, difficulty: .easy, selectedDifficulty: $selectedDifficulty, navigateToContentView: $navigateToContentView
+                            )
+                            
+                            SelectDiffuclty(title: "Medium", color: .orange, difficulty: .medium, selectedDifficulty: $selectedDifficulty, navigateToContentView: $navigateToContentView
+                            )
+                            SelectDiffuclty(title: "Hard", color: .red, difficulty: .hard, selectedDifficulty: $selectedDifficulty, navigateToContentView: $navigateToContentView
+                            )
+                            
                         }
-                        
+
                         Spacer()
                     }
-                    
-                }.background(BackGround3())
-                
-            }.navigationBarBackButtonHidden()
+                }
+                .background(BackGround3())
+                .navigationDestination(isPresented: $navigateToContentView) {
+                    ContentView(selectedDifficulty: selectedDifficulty) // Zorluk seviyesini contentView ekranına aktarır
+                }
+            }
+            .navigationBarBackButtonHidden()
+
             if isLoading {
-                
-                    Color(.systemBackground)
-                        .ignoresSafeArea()
-                        .opacity(0.8)
-                        
-                    SplashBackGround()
-                
+                Color(.systemBackground)
+                    .ignoresSafeArea()
+                    .opacity(0.8)
+                SplashBackGround()
             }
         }
-        
     }
 }
+
+
 
 #Preview {
     GameView()

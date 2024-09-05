@@ -9,6 +9,8 @@ import Foundation
 import SwiftUI
 
 class SudokuViewModel: ObservableObject {
+    
+    
     @State private var totalScore = UserDataManager.shared.getTotalScore()
     @Published var sudokuModel = SudokuModel()
     @Published var initialCells: [[Int]] = Array(repeating: Array(repeating: 0, count: 9), count: 9)
@@ -16,14 +18,31 @@ class SudokuViewModel: ObservableObject {
     @Published var selectedColumn = -1
     @Published var isGameStarted = false // start game bool
     @Published var isGameFinished = false
+    
+    @Published var selectedDifficulty: Difficulty = .medium // Default zorluk seviyesi
 
     @Published var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
     var startTime: Date?
+    enum Difficulty {
+            case easy, medium, hard
+        }
     
-    func startGame() {
+    func startGame(difficulty: Difficulty) {
         isGameStarted = true
-        sudokuModel.fillBoard() // Önce rastgele sayıları başlat, initialize random cells first
+        self.selectedDifficulty = difficulty
+                let cluesToRemove: Int
+                
+                switch difficulty {
+                case .easy:
+                    cluesToRemove = 40
+                case .medium:
+                    cluesToRemove = 50
+                case .hard:
+                    cluesToRemove = 60
+                }
+                
+        sudokuModel.fillBoard(cluesToRemove: cluesToRemove) // Önce rastgele sayıları başlat, initialize random cells first
         initialCells = sudokuModel.cells // Sonra başlangıç hücrelerini güncelle, Then update the starting cells
         startTime = Date()
     }
